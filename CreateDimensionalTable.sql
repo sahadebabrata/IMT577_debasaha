@@ -1,5 +1,5 @@
 --First Create the DIM_DATE.DDL to Create the Date Dimension Table
--- Post creation of DIM_DATE table, execute the below query. 
+-- Post creation of DIM_DATE table, execute the below query:
 
 
 CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.DIM_PRODUCT(
