@@ -18,8 +18,6 @@ CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.DIM_PRODUCT(
   "ProductProfitMarginUnitPercent" FLOAT
 );
 
-
-
 CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.DIM_LOCATION(
   "DimLocationID" INTEGER IDENTITY(1,1) CONSTRAINT "PK_DimLocationID" PRIMARY KEY NOT NULL,
   "SourceLocationID" VARCHAR(255), --changed datatype from Integer to Varchar, since source ID for customer and reseller were of datatype Varchar 
