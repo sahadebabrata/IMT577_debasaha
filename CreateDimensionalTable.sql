@@ -22,7 +22,7 @@ CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.DIM_PRODUCT(
 
 CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.DIM_LOCATION(
   "DimLocationID" INTEGER IDENTITY(1,1) CONSTRAINT "PK_DimLocationID" PRIMARY KEY NOT NULL,
-  "SourceLocationID" INTEGER, 
+  "SourceLocationID" VARCHAR(255), --changed datatype from Integer to Varchar, since source ID for customer and reseller were of datatype Varchar 
   "PostalCode" VARCHAR(255),
   "Address" VARCHAR (255), 
   "City" VARCHAR (255),
@@ -110,65 +110,5 @@ CREATE OR REPLACE TABLE IMT577_DW_DEBABRATA_SAHA.PUBLIC.FACT_PRODUCTSALESTARGET(
   "DimTargetDateID" NUMBER(9,0) CONSTRAINT "FK_DATE_PKEYProductTarget" FOREIGN KEY REFERENCES DIM_DATE("DATE_PKEY") NOT NULL,
   "ProductTargetSalesQuanity" INTEGER
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
