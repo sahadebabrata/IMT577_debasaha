@@ -1,3 +1,12 @@
+/*****************************************
+Course: IMT 577
+Student: Debabrata Saha
+Assignment: Module 6
+Date: 05/07/2022
+Description: Script for Loading of Dimensional tables from Staging tables. 
+
+*****************************************/
+
 -- LOAD THE DIMENSIONAL TABLES:
 
 --LOAD DIM_PRODUCT
@@ -179,9 +188,3 @@ INSERT
 	WHERE
 		sc.CHANNELCATEGORYID = scc.CHANNELCATEGORYID
 );
-
-
-
-
-
-
