@@ -67,7 +67,7 @@ ON
 INSERT INTO FACT_SALESACTUAL ("DimProductID", "DimStoreID", "DimResellerID", "DimCustomerID", "DimChannelID", "DimSaleDateID", "DimLocationID", 
 "SourceSalesHeaderID", "SourcesSalesDetailID", "SaleAmount", "SaleQuantity", "SaleUnitPrice", "SaleExtendedCost", "SaleTotalProfit" )
 (
-SELECT
+SELECT DISTINCT 
 	dp."DimProductID",
 	NVL(ds."DimStoreID", -1) AS "DimStoreID",
 	NVL(dr."DimResellerID", -1) AS "DimResellerID",
@@ -86,20 +86,19 @@ FROM
 	STAGE_SALESDETAIL sd
 JOIN STAGE_SALESHEADER sh ON
 	sd.SALESHEADERID = sh.SALESHEADERID
-JOIN DIM_PRODUCT dp ON
+LEFT JOIN DIM_PRODUCT dp ON
 	sd.PRODUCTID = dp."SourceProductID"
-JOIN DIM_CHANNEL dch ON
-	TO_CHAR(sh.CHANNELID) = dch."SourceChannelID"
+LEFT JOIN DIM_LOCATION dl ON
+	(TO_CHAR(sh.STOREID) = dl."SourceLocationID"
+		OR sh.CUSTOMERID = dl."SourceLocationID"
+		OR sh.RESELLERID = dl."SourceLocationID")
 JOIN DIM_DATE dd ON
 	sh."DATE" = dd."DATE"
+LEFT JOIN DIM_CHANNEL dch ON
+	TO_CHAR(sh.CHANNELID) = dch."SourceChannelID"
+LEFT JOIN DIM_CUSTOMER dc ON
+	sh.CUSTOMERID = dc."SourceCustomerID"   
 LEFT JOIN DIM_STORE ds ON
 	TO_CHAR(sh.STOREID) = ds."SourceStoreID"
 LEFT JOIN DIM_RESELLER dr ON
 	sh.RESELLERID = dr."SourceResellerID"
-LEFT JOIN DIM_CUSTOMER dc ON
-	sh.CUSTOMERID = dc."SourceCustomerID"
-JOIN DIM_LOCATION dl ON
-	(TO_CHAR(sh.STOREID) = dl."SourceLocationID"
-		OR sh.CUSTOMERID = dl."SourceLocationID"
-		OR sh.RESELLERID = dl."SourceLocationID")
-)
