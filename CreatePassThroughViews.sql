@@ -1,3 +1,10 @@
+/*****************************************
+Course: IMT 577
+Student: Debabrata Saha
+Assignment: Module 8
+Date: 05/22/2022
+Description: Script for creating secure pass-through views. 
+*****************************************/
 CREATE OR REPLACE SECURE VIEW VW_DIM_CHANNEL AS
 SELECT "DimChannelID","SourceChannelID","SourceChannelCategoryID","ChannelName","ChannelCategory" FROM DIM_CHANNEL ;
 
