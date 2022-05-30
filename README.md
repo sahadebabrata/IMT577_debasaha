@@ -16,3 +16,5 @@ Assignment 8:
 1. **CreateMainViews.sql** -- script to create views for Tableau visualization.
 2. **CreatePassThroughViews.sql** -- script to create pass-through views for all Fact and Dimension tables. 
 
+Assignment 9:
+1. **Create_Views_Final_Tableau.sql** -- script to create final views necessary for Tableau visualizations and dashboards. 
